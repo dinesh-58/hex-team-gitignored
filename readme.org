@@ -1,5 +1,6 @@
 #+TITLE:Recycling encouragement web-app
 #+AUTHOR: Team gitignored
+By Team gitignored
 
 * Description
 # non-technical person should be able to understand the project after reading this 
@@ -36,10 +37,10 @@ Recycle station operators can:
 - Employment opportunities for involved personnel (operators, workers that make recycled products, waste collectors)
 - Collected data can be aggregated & analysed to gain insight regarding wastage amount, recycling habits. Historical data can also be used to gague impacts of awareness campaigns, workshops on recycling trends.
 
-* Contribution guide
+* Contribution guide (only for team members)
 1. Clone this repo
 2. Create a branch with your own name
-3. **Only make changes to your branch. Never to ~main~**
+3. **Only make changes to your branch. Never to ~main~ **
 4. Don't merge to ~main~
 5. Make pull requests(PRs) to main through the github website or a GUI tool instead
 6. Notify team leader of new PRs
