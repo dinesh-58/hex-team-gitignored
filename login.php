@@ -50,6 +50,8 @@ if (isset($_POST['submit'])) {
     } else {
         $result = $emailStatement->fetch(PDO::FETCH_ASSOC);
         if (strcmp($password, $result['password']) == 0) {
+            session_start();
+            $_SESSION['userId'] = $result['userId'];
             redirect("dashboard-$userType.php");
         } else {
             setFail('Password is incorrect');
