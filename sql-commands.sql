@@ -26,6 +26,7 @@ create table logs(
     ), -- checking that date is in proper format
     userId integer not null,
     recycleCategoryId text not null,
+    description text check(length(description) <= 240),
     foreign key (userId) references users(userId),
     foreign key (recycleCategoryId) references recycleCategory(categoryId)
 )
