@@ -1,4 +1,10 @@
-<?php 
+<?php
+function redirect($url) {
+    ob_start();
+    header('Location: '.$url);
+    ob_end_flush();
+    die();
+}
 // require_once './head.html'
 ?>
 <form method="post" action="">
@@ -12,3 +18,44 @@
         <br><button type="submit" name="submit">Submit</button>
     </fieldset>
 </form>
+
+<dialog id="loginFail">
+    <span></span>
+    <button>Ok</button>
+</dialog>
+
+<?php
+function setFail($message) {
+    ?>
+    <script>
+        const failDialog = document.querySelector('#loginFail');
+        failDialog.showModal();
+        failDialog.innerText = <?=$message?>;
+        failDialog.querySelector('button').onclick = () => failDialog.close();
+    </script>
+    <?php
+}
+
+if (isset($_POST['submit'])) {
+    $email = $_POST['email']; 
+    $password = $_POST['password']; 
+    $userType = $_POST['userType']; 
+
+    $pdo = new PDO('sqlite:recycle.db');
+    $emailSql = "select email, password from users where email = '$email' limit 1";
+    $emailStatement = $pdo->query($emailSql);
+
+    if (!$emailStatement) {
+        setFail('Couldn\'t find an account with this email');
+    } else {
+        $result = $emailStatement->fetch(PDO::FETCH_ASSOC);
+        if (strcmp($password, $result['password']) == 0) {
+            redirect("dashboard-$userType.php");
+        } else {
+            setFail('Password is incorrect');
+        }
+    }
+}
+
+// require_once './footer.html'
+?>
