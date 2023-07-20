@@ -1,4 +1,5 @@
 <?php
+session_start();
 function redirect($url) {
     ob_start();
     header('Location: '.$url);
@@ -42,7 +43,7 @@ if (isset($_POST['submit'])) {
     $userType = $_POST['userType']; 
 
     $pdo = new PDO('sqlite:recycle.db');
-    $emailSql = "select email, password from users where email = '$email' limit 1";
+    $emailSql = "select userId, email, password from users where email = '$email' limit 1";
     $emailStatement = $pdo->query($emailSql);
 
     if (!$emailStatement) {
@@ -50,7 +51,6 @@ if (isset($_POST['submit'])) {
     } else {
         $result = $emailStatement->fetch(PDO::FETCH_ASSOC);
         if (strcmp($password, $result['password']) == 0) {
-            session_start();
             $_SESSION['userId'] = $result['userId'];
             redirect("dashboard-$userType.php");
         } else {
