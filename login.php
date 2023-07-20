@@ -13,9 +13,6 @@ function redirect($url) {
         <legend>Login</legend>
         <br><label>Email: <input type="email" name="email" id="email" required></label>
         <br><label>Password: <input type="password" name="password" id="password" required pattern="^(\S{8,14})" title="8 to 14 non-whitespace characters"></label>
-        <br>User type: 
-        <br><label><input type="radio" name="userType" value="normal" checked>Normal User</label>
-        <label><input type="radio" name="userType" value="operator">Admin/ Recycle Station Operator</label>
         <br><button type="submit" name="submit">Submit</button>
     </fieldset>
 </form>
@@ -40,10 +37,9 @@ function setFail($message) {
 if (isset($_POST['submit'])) {
     $email = $_POST['email']; 
     $password = $_POST['password']; 
-    $userType = $_POST['userType']; 
 
     $pdo = new PDO('sqlite:recycle.db');
-    $emailSql = "select userId, email, password from users where email = '$email' limit 1";
+    $emailSql = "select userId, email, password, userType from users where email = '$email' limit 1";
     $emailStatement = $pdo->query($emailSql);
 
     if (!$emailStatement) {
@@ -52,7 +48,7 @@ if (isset($_POST['submit'])) {
         $result = $emailStatement->fetch(PDO::FETCH_ASSOC);
         if (strcmp($password, $result['password']) == 0) {
             $_SESSION['userId'] = $result['userId'];
-            redirect("dashboard-$userType.php");
+            redirect("dashboard-{$result['userType']}.php");
         } else {
             setFail('Password is incorrect');
         }
