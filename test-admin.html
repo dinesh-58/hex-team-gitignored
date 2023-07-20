@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <title>User Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="common.css" rel="stylesheet">
+<style type="text/css" id="operaUserStyle"></style><style type="text/css"></style><style type="text/css" id="tts-styles">[data-tts-block-id].tts-active {background: rgba(206, 225, 255, 0.9) !important;} [data-tts-sentence-id].tts-active {background: rgba(0, 89, 191, 0.7) !important;}</style></head>
+<body>
+    <main class="dashboard__main">
+        <div class="navbar__sitename">
+            <a href="#" class="navlink">
+                <img src="../img/favicon.png" alt="Site Logo" class="navbar__sitename-logo" height="25">
+                Placeholder
+            </a>
+        </div>
+        <div class="login">
+            <a href="#" class="navlink">
+                <img src="../img/icon_login.png" alt="Login" class="icon">
+                Log In
+            </a>
+        </div>
+        <div class="user-info">
+            <img src="../img/iconmonstr-user.svg" alt="Profile Icon" class="user-info__icon">
+            <h2 class="user-info__name">John Doe</h2>
+            <div class="user-info__points">⭐ Reward Points: 100</div>
+        </div>
+        <div class="record-button">
+            <button id="btnRecordRecycle">
+                Record a recycle event
+                <div class="arrow"></div>
+            </button>
+            <button id="btnRecordRedeem">
+                Record a redeem event
+                <div class="arrow"></div>
+            </button>
+        </div>
+    </main>
+    <dialog id="dialogRecycle">
+        <form method="post">
+            <select name="userId" required="">User:</select>
+        </form>
+    </dialog>
+</body>
+</html>
