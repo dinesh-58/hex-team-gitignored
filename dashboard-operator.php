@@ -25,7 +25,7 @@ require_once './dashboard-include.php';
                     ?>
                 </select>
 
-                <select name="recycleCategory" required>Recycle Category:
+                <select name="recycleCategoryId" required>Recycle Category:
                     <?php
                         $recyclesql = 'select * from recycleCategory';
                         $recycleStatement = $pdo->query($recyclesql);
@@ -43,7 +43,7 @@ require_once './dashboard-include.php';
         </dialog>
 
         <dialog id="dialogRedeem">
-            <form>
+            <form method="post">
                 <select name="userId" required>User:
                     <?php 
                         $usersStatement = $pdo->query($usersSql);
@@ -69,7 +69,25 @@ require_once './dashboard-include.php';
         </script>
 
         <?php
-            // TODO handle form submits & apply changes in database
+            if (isset($_POST['submitRecycle'])) {
+                $userId = $_POST['userId'];
+                $recycleCategoryId = $_POST['recycleCategoryId'];
+                $pointsAwarded = $_POST['pointsAwarded'];
+                $description = $_POST['description'];
+
+                $logsSql = "insert into logs(userId, recycleCategoryId, description) values('$userId', '$recycleCategoryId', '$description')";
+                $pdo->query($logsSql);
+
+                $increasePointsSql = "update users set `rewardPoints` = `rewardPoints` + '$pointsAwarded' where `userId` = '$userId'";
+                $pdo->query($increasePointsSql);
+            }
+
+            if (isset($_POST['submitRedeem'])) {
+                $userId = $_POST['userId'];
+                $pointsSpent = $_POST['pointsSpent'];
+                $decreasePointsSql = "update users set `rewardPoints` = `rewardPoints` - '$pointsSpent' where `userId` = '$userId'";
+                $pdo->query($decreasePointsSql);
+            }
         ?>
     </body>
 </html>
