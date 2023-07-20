@@ -4,12 +4,12 @@
 session_start();
 if (!isset($_SESSION['userId'])) {
     ob_start();
-    header('Location: ./login.php');
+    header('Location: ../login.php');
     ob_end_flush();
     die();
 }
 
-$pdo = new PDO('sqlite:recycle.db');
+$pdo = new PDO('sqlite:../recycle.db');
 $sql = "select fName, userType, rewardPoints from users where userId = {$_SESSION['userId']}";
 $currentUserStatement = $pdo->query($sql);
 $result = $currentUserStatement->fetch(PDO::FETCH_ASSOC);
