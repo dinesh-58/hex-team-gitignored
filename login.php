@@ -6,9 +6,9 @@ function redirect($url) {
     ob_end_flush();
     die();
 }
-// require_once './head.html'
+require_once './header.html'
 ?>
-<form method="post" action="">
+<form method="post" id="form-login" action="">
     <fieldset>
         <legend>Login</legend>
         <br><label>Email: <input type="email" name="email" id="email" required></label>
@@ -55,5 +55,5 @@ if (isset($_POST['submit'])) {
     }
 }
 
-// require_once './footer.html'
+require_once './footer.html'
 ?>

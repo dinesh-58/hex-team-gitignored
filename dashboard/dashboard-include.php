@@ -21,15 +21,22 @@ $result = $currentUserStatement->fetch(PDO::FETCH_ASSOC);
         <title>User Dashboard</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="dashboard-style.css" rel="stylesheet">
+        <link href="../common.css" rel="stylesheet">
     </head>
     <body>
-        <header>
-            <a href="./index.html">
-                <img src="" alt="Logo">
-                <span>Placeholder name</span>
-            </a>
-        </header>
+	<main class="dashboard__main">
+		<div class="navbar__sitename">
+			<a href="../index.php" class="navlink">
+				<img src="../img/favicon.png" alt="Site Logo" class="navbar__sitename-logo" height="25">
+				Placeholder
+			</a>
+		</div>
+		<div class="login">
+			<a href="#" class="navlink">
+				<img src="../img/icon_login.png" alt="Login" class="icon">
+				Log In
+			</a>
+		</div>
 
         <div class="user-info">
                 <img src="../img/iconmonstr-user.svg" alt="Profile icon">
@@ -42,4 +49,3 @@ $result = $currentUserStatement->fetch(PDO::FETCH_ASSOC);
                     }
                 ?>
         </div>
-

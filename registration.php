@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Registration</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="style.css" rel="stylesheet">
-    </head>
-    <body>
-        <!--?php require_once './head.html'?-->    
-        <form method="post" action="">
+<?php require_once './header.html'?>
+
+        <form method="post" id="form-register" action="">
             <fieldset>
                 <legend>Registration</legend>
                 <label>Full Name: <input type="text" name="fName" id="fName" required></label>
@@ -68,7 +60,6 @@ if (isset($_POST['submit'])) {
 <?php
     } 
 }
+require_once './footer.html'
 ?>
-    </body>
-</html>
 

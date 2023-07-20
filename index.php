@@ -1,3 +1,4 @@
+<?php require_once './header.html'?>
 <header>
 	<div class="hero-section">
 		<img src="img/favicon.png" alt="Site Logo" class="hero-image">
@@ -38,3 +39,4 @@
 		</figure>
 	</article>
 </main>
+<?php require_once './footer.html'?>

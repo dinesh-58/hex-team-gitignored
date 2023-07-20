@@ -284,3 +284,17 @@ nav .icon, footer .icon {
 	display: flex;
 	justify-content: space-between;
 }
+#form-register, 
+#form-login {
+    margin-top: 45px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+fieldset {
+    padding: 3%;
+}
+#form-register button,
+#form-login button {
+    font-size: 1.2rem;
+}
