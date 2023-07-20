@@ -2,6 +2,7 @@
 require_once './dashboard-include.php';
 ?>
         <div class="rewards-container">
+            <span>Redeemable Rewards</span>
             <?php
                 $costs = [50, 100, 200];
                 for ($i=0; $i<3; $i++) {
