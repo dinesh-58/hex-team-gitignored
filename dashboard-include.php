@@ -11,8 +11,8 @@ if (!isset($_SESSION['userId'])) {
 
 $pdo = new PDO('sqlite:recycle.db');
 $sql = "select fName, userType, rewardPoints from users where userId = {$_SESSION['userId']}";
-$statement = $pdo->query($sql);
-$result = $statement->fetch(PDO::FETCH_ASSOC);
+$currentUserStatement = $pdo->query($sql);
+$result = $currentUserStatement->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
