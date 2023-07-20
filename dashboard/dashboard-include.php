@@ -4,12 +4,12 @@
 session_start();
 if (!isset($_SESSION['userId'])) {
     ob_start();
-    header('Location: ./login.php');
+    header('Location: ../login.php');
     ob_end_flush();
     die();
 }
 
-$pdo = new PDO('sqlite:recycle.db');
+$pdo = new PDO('sqlite:../recycle.db');
 $sql = "select fName, userType, rewardPoints from users where userId = {$_SESSION['userId']}";
 $currentUserStatement = $pdo->query($sql);
 $result = $currentUserStatement->fetch(PDO::FETCH_ASSOC);
@@ -32,11 +32,11 @@ $result = $currentUserStatement->fetch(PDO::FETCH_ASSOC);
         </header>
 
         <div class="user-info">
-                <img src="" alt="Profile icon">
+                <img src="../img/iconmonstr-user.svg" alt="Profile icon">
                 <span><?=$result['fName']?></span>
                 <?php 
                     if (strcmp($result['userType'], 'normal') == 0) {
-                        echo "<span>✨ Reward points: {$result['rewardPoints']}<span>";
+                        echo "<span>🌟Reward points: {$result['rewardPoints']}<span>";
                     } else {
                         echo "<span>Recycling Station Operator</span>";
                     }
