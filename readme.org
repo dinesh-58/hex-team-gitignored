@@ -46,5 +46,10 @@ Recycle station operators can:
 6. Notify team leader of new PRs
 7. Don't merge PRs on your own
 
+** Test databse-related operations (registration, login, user actions)
+- Ensure you have php & SQLite installed.
+- Create database & tables using commands in =sql-commands.sql= file
+- Run ~php -S localhost:8000~ in your terminal & visit =http://localhost:8000= in your browser
+
 * Style guide
 1. names for variables, ids, classes, functions, ... should be in ~camelCase~
